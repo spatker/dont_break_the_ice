@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvc80k7v3yfqa"]
+
+[ext_resource type="Texture2D" uid="uid://deise86102k27" path="res://assets/ice4.png" id="1_7ryk1"]
+[ext_resource type="Script" path="res://ice.gd" id="1_sjb6r"]
+
+[node name="ice4" type="Area2D"]
+script = ExtResource("1_sjb6r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7ryk1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-8, -104, -80, -56, -64, 0, -16, 56, 32, 88, 72, 104, 80, 72, 72, 56, 56, 32, 24, -56)

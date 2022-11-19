@@ -13,3 +13,12 @@ texture = ExtResource("1_qqe63")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(5, 5)
 polygon = PackedVector2Array(0, -32, -6, -25, -8, 0, -6, 25, 0, 32, 6, 24, 8, 0, 6, -25)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+scale = Vector2(5.1, 5.1)
+polygon = PackedVector2Array(0, -32, -6, -25, -8, 0, -6, 25, 0, 32, 6, 24, 8, 0, 6, -25)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

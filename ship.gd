@@ -14,7 +14,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("accelerate"):
 		velocity.y = ACCELERATE_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
+	# Get the input direction and handle the movement.
 	var direction = Input.get_axis("steer_left", "steer_right")
 	if direction:
 		velocity.x = direction * SPEED
@@ -22,3 +22,11 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+func _on_area_2d_body_entered(body):
+	pass
+
+
+func _on_area_2d_area_entered(area):
+	print_debug(area.name)

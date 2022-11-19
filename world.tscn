@@ -1,9 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://h30l5gcax1y0"]
+[gd_scene load_steps=3 format=3 uid="uid://h30l5gcax1y0"]
 
 [ext_resource type="PackedScene" uid="uid://co4wfi3g7c3qk" path="res://ship.tscn" id="1_dkl2f"]
+[ext_resource type="PackedScene" uid="uid://dvc80k7v3yfqa" path="res://ice_4.tscn" id="2_cogg1"]
 
 [node name="world" type="Node2D"]
 
 [node name="ship" parent="." instance=ExtResource("1_dkl2f")]
-position = Vector2(296, 864)
+position = Vector2(224, 864)
 scale = Vector2(0.6, 0.6)
+z_index = 1
+
+[node name="Camera2D" type="Camera2D" parent="ship"]
+offset = Vector2(0, -300)
+current = true
+rotation_smoothing_enabled = true
+
+[node name="ice4" parent="." instance=ExtResource("2_cogg1")]
+position = Vector2(352, 384)
