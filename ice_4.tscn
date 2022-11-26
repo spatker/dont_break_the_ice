@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvc80k7v3yfqa"]
+[gd_scene load_steps=4 format=3 uid="uid://dvc80k7v3yfqa"]
 
 [ext_resource type="Texture2D" uid="uid://deise86102k27" path="res://assets/ice4.png" id="1_7ryk1"]
 [ext_resource type="Script" path="res://ice.gd" id="1_sjb6r"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t6w0i"]
+polygon = PackedVector2Array(-80, -56, -64, 0, -16, 56, 32, 88, 72, 104, 80, 64, 56, 32, 24, -56, -8, -104)
 
 [node name="ice4" type="Area2D"]
 script = ExtResource("1_sjb6r")
@@ -11,3 +14,7 @@ texture = ExtResource("1_7ryk1")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-8, -104, -80, -56, -64, 0, -16, 56, 32, 88, 72, 104, 80, 72, 72, 56, 56, 32, 24, -56)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_t6w0i")

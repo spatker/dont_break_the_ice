@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://co4wfi3g7c3qk"]
+[gd_scene load_steps=4 format=3 uid="uid://co4wfi3g7c3qk"]
 
 [ext_resource type="Script" path="res://ship.gd" id="1_ncn2b"]
 [ext_resource type="Texture2D" uid="uid://bxwk7bhborfqr" path="res://assets/ship.png" id="1_qqe63"]
+[ext_resource type="Texture2D" uid="uid://brittn0kwvys3" path="res://assets/light.png" id="3_fjjvp"]
 
 [node name="ship" type="CharacterBody2D"]
 script = ExtResource("1_ncn2b")
@@ -22,6 +23,14 @@ polygon = PackedVector2Array(0, -32, -6, -25, -8, 0, -6, 25, 0, 32, 6, 24, 8, 0,
 rotation = 1.5708
 scale = Vector2(5.1, 5.1)
 polygon = PackedVector2Array(0, -32, -6, -25, -8, 0, -6, 25, 0, 32, 6, 24, 8, 0, 6, -25)
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(389, 11)
+energy = 10.71
+shadow_enabled = true
+shadow_filter_smooth = 21.3
+texture = ExtResource("3_fjjvp")
+height = 1.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
