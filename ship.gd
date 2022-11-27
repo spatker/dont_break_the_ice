@@ -10,6 +10,8 @@ const drag = -0.001
 
 var acceleration = Vector2()
 var steer_direction
+var collided = false
+var health = 6
 
 
 func _physics_process(delta):
@@ -17,7 +19,20 @@ func _physics_process(delta):
 	get_input()
 	calculate_friction()
 	calculate_steering(delta)
+	
+	var prev_collided = collided
 	var collision = move_and_collide(velocity * delta)
+	if collision:
+		collided = true
+		var id = collision.get_collider_id()
+		var inst = instance_from_id(id)
+		inst.apply_impulse(-collision.get_normal(), collision.get_position())
+	else:
+		collided = false
+	if collided and not prev_collided:
+		health -= 1
+		print_debug(health)
+
 
 func calculate_friction():
 	var friction_force = velocity * friction
@@ -51,10 +66,3 @@ func get_input():
 		acceleration = transform.x * engine_power
 	if Input.is_action_pressed("brake"):
 		acceleration = transform.x * -engine_power
-
-func _on_area_2d_body_entered(body):
-	pass
-
-
-func _on_area_2d_area_entered(area):
-	print_debug(area.name)

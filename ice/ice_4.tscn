@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn2dup5xouq1r"]
+
+[ext_resource type="Texture2D" uid="uid://deise86102k27" path="res://assets/ice4.png" id="2_6nglb"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+mass = 5.0
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 0.3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6nglb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(16, -75.4, 16, -72, 48.2, 15, 82, 69.9, 78.5, 76, 77.8, 76, 63.4, 106.9, 54, 104.8, 54, 102.6, -9, 69.6, -9, 66.8, -72, -24.1, -72, -27.3, -80.7, -62, -74, -62, -21, -101, -21, -103.1, -13.5, -106.1)
