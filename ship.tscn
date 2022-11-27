@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://co4wfi3g7c3qk"]
+[gd_scene load_steps=8 format=3 uid="uid://co4wfi3g7c3qk"]
 
 [ext_resource type="Script" path="res://ship.gd" id="1_ncn2b"]
 [ext_resource type="Texture2D" uid="uid://bxwk7bhborfqr" path="res://assets/ship.png" id="1_qqe63"]
 [ext_resource type="Texture2D" uid="uid://brittn0kwvys3" path="res://assets/light.png" id="3_fjjvp"]
+[ext_resource type="AudioStream" uid="uid://b7blu1qc80ehu" path="res://assets/177221__ecfike__ice-hit-8.wav" id="4_af57c"]
+[ext_resource type="AudioStream" uid="uid://cvhhp6kejfu6y" path="res://assets/177222__ecfike__ice-hit-1.wav" id="5_0lx6e"]
+[ext_resource type="AudioStream" uid="uid://cwh00217lmp5s" path="res://assets/177224__ecfike__ice-hit-7.wav" id="6_7pl0r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1k73c"]
 radius = 38.0
@@ -29,3 +32,12 @@ height = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_1k73c")
+
+[node name="hit_sound1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_af57c")
+
+[node name="hit_sound2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_0lx6e")
+
+[node name="hit_sound3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_7pl0r")

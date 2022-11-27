@@ -7,6 +7,11 @@ const steering_angle = 8
 const engine_power = 100
 const friction = -0.2
 const drag = -0.001
+@onready var hit_sounds = [
+	get_node("hit_sound1"),
+	get_node("hit_sound2"),
+	get_node("hit_sound3"),
+]
 
 var acceleration = Vector2()
 var steer_direction
@@ -18,7 +23,8 @@ signal died
 
 func _physics_process(delta):
 	acceleration = Vector2.ZERO
-	get_input()
+	if health > 0:
+		get_input()
 	calculate_friction()
 	calculate_steering(delta)
 	
@@ -36,6 +42,8 @@ func _physics_process(delta):
 		emit_signal("health_depleted")
 		if health == 0:
 			emit_signal("died")
+		if health >= -1:
+			hit_sounds[randi_range(0,hit_sounds.size()-1)].play()
 
 
 func calculate_friction():

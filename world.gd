@@ -39,16 +39,15 @@ func _on_update_health():
 
 func _on_died():
 	game_end_text.text = "[center]The ship has taken too much damage![/center]"
-	new_game.position = player.position
 	new_game.visible = true
 	
 func _win():
 	game_end_text.text = "[center]Congrats! You've escaped![/center]"
-	new_game.position = player.position
 	new_game.visible = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	new_game.position = player.position
 	if absf(player.position.x) > board_size or absf(player.position.y) > board_size:
 		_win()
 

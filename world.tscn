@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ycp236ulrvm1"]
+[gd_scene load_steps=9 format=3 uid="uid://ycp236ulrvm1"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_6vcjg"]
 [ext_resource type="PackedScene" uid="uid://co4wfi3g7c3qk" path="res://ship.tscn" id="1_dkl2f"]
 [ext_resource type="Texture2D" uid="uid://dmpas1qcrf15w" path="res://assets/background.png" id="3_46gyk"]
+[ext_resource type="AudioStream" uid="uid://ccldx6fbl3ioo" path="res://assets/171992__bradovic__eerie-ambience.mp3" id="4_ks0su"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dwkxn"]
 light_mode = 1
@@ -39,7 +40,6 @@ offset_right = 256.0
 
 [node name="new_game_button" type="Button" parent="new_game/VBoxContainer"]
 material = SubResource("CanvasItemMaterial_jesm0")
-layout_mode = 2
 offset_right = 512.0
 offset_bottom = 31.0
 text = "New Game"
@@ -74,5 +74,10 @@ position = Vector2(0.00012207, 0)
 offset = Vector2(0, -300)
 current = true
 rotation_smoothing_enabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ks0su")
+volume_db = -16.0
+autoplay = true
 
 [connection signal="pressed" from="new_game/VBoxContainer/new_game_button" to="." method="_on_button_pressed"]
