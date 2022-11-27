@@ -13,6 +13,8 @@ var steer_direction
 var collided = false
 var health = 6
 
+signal health_depleted
+signal died
 
 func _physics_process(delta):
 	acceleration = Vector2.ZERO
@@ -31,7 +33,9 @@ func _physics_process(delta):
 		collided = false
 	if collided and not prev_collided:
 		health -= 1
-		print_debug(health)
+		emit_signal("health_depleted")
+		if health == 0:
+			emit_signal("died")
 
 
 func calculate_friction():
