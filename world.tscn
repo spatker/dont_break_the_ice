@@ -1,26 +1,78 @@
-[gd_scene load_steps=4 format=3 uid="uid://ycp236ulrvm1"]
+[gd_scene load_steps=8 format=3 uid="uid://ycp236ulrvm1"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_6vcjg"]
 [ext_resource type="PackedScene" uid="uid://co4wfi3g7c3qk" path="res://ship.tscn" id="1_dkl2f"]
 [ext_resource type="Texture2D" uid="uid://dmpas1qcrf15w" path="res://assets/background.png" id="3_46gyk"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dwkxn"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jesm0"]
+light_mode = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hv0wj"]
+bg_color = Color(100, 0, 0, 0.28)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkfj0"]
+bg_color = Color(100, 0, 0, 1)
+
 [node name="world" type="Node2D"]
 script = ExtResource("1_6vcjg")
+
+[node name="new_game" type="Node2D" parent="."]
+visible = false
+
+[node name="win_text" type="RichTextLabel" parent="new_game"]
+material = SubResource("CanvasItemMaterial_dwkxn")
+offset_left = -256.0
+offset_top = -128.0
+offset_right = 256.0
+offset_bottom = -32.0
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]Example[/center]"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="new_game"]
+offset_left = -256.0
+offset_top = -32.0
+offset_right = 256.0
+
+[node name="new_game_button" type="Button" parent="new_game/VBoxContainer"]
+material = SubResource("CanvasItemMaterial_jesm0")
+layout_mode = 2
+offset_right = 512.0
+offset_bottom = 31.0
+text = "New Game"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.270588, 0.270588, 0.270588, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(128, 128)
+z_index = -2
 texture = ExtResource("3_46gyk")
 
 [node name="ship" parent="." instance=ExtResource("1_dkl2f")]
 rotation = -1.5708
 scale = Vector2(0.6, 0.6)
-z_index = 1
+z_index = -1
+
+[node name="health_bar" type="ProgressBar" parent="ship"]
+offset_left = -173.0
+offset_top = -40.0
+offset_right = -93.0
+offset_bottom = -24.0
+rotation = 1.5708
+theme_override_styles/background = SubResource("StyleBoxFlat_hv0wj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gkfj0")
+max_value = 6.0
+value = 6.0
+show_percentage = false
 
 [node name="Camera2D" type="Camera2D" parent="ship"]
 position = Vector2(0.00012207, 0)
 offset = Vector2(0, -300)
 current = true
 rotation_smoothing_enabled = true
+
+[connection signal="pressed" from="new_game/VBoxContainer/new_game_button" to="." method="_on_button_pressed"]

@@ -1,10 +1,13 @@
 extends Node2D
 
-const board_size = 600
-const num_icebergs = 30
+const board_size = 6000
+const num_icebergs = 3000
 const safe_zone_size = 256
 
 @onready var player = get_node("ship")
+@onready var health_bar = get_node("ship/health_bar")
+@onready var new_game = get_node("new_game")
+@onready var game_end_text = get_node("new_game/win_text")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,15 +35,23 @@ func _ready():
 	player.died.connect(_on_died)
 
 func _on_update_health():
-	print_debug(player.health)
+	health_bar.value = player.health
 
 func _on_died():
-	print_debug(player.health)
+	game_end_text.text = "[center]The ship has taken too much damage![/center]"
+	new_game.position = player.position
+	new_game.visible = true
 	
 func _win():
-	get_tree().change_scene_to_file("res://win_screen.tscn")
+	game_end_text.text = "[center]Congrats! You've escaped![/center]"
+	new_game.position = player.position
+	new_game.visible = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if absf(player.position.x) > board_size or absf(player.position.y) > board_size:
 		_win()
+
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://world.tscn")
