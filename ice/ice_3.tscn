@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8usb0fq1uc38"]
+
+[ext_resource type="Texture2D" uid="uid://dcwb8ke2xk6ip" path="res://assets/ice3.png" id="1_8pai1"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6vr3v"]
+polygon = PackedVector2Array(28.5, -32.5, 35.6, 2.8, 65.5, 49.3, 49.3, 68.5, 38.7, 68.5, -0.5, 66.1, -37.5, 44.5, -61.5, 9.1, -61, -26.5, -47.9, -48.5, -1.3, -71.6)
+
+[node name="ice_3" type="RigidBody2D"]
+mass = 8.0
+gravity_scale = 0.0
+lock_rotation = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8pai1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(28.5, -32.5, 35.6, 2.8, 65.5, 49.3, 49.3, 68.5, 38.7, 68.5, -0.5, 66.1, -37.5, 44.5, -61.5, 9.1, -61, -26.5, -47.9, -48.5, -1.3, -71.6)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_6vr3v")

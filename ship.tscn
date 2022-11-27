@@ -17,11 +17,13 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_qqe63")
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(389, 11)
-energy = 10.71
+position = Vector2(41, -7)
+scale = Vector2(1.01367, 0.453125)
+energy = 4.0
 shadow_enabled = true
 shadow_filter_smooth = 21.3
 texture = ExtResource("3_fjjvp")
+offset = Vector2(300, 0)
 height = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
